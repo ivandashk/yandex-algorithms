@@ -7,6 +7,8 @@
         <input type="text" onkeyup="task2(this.value)">
         <h2>Задание 3. Сортировка вставками</h2>
         <input type="text" onkeyup="task3(this.value)">
+        <h2>Задание 4. Контекст скобок</h2>
+        <input type="text" onkeyup="task4(this.value)">
     </div>
 </body>    
 <script>
@@ -125,6 +127,35 @@
         }
 
         console.log(sortedArray);
+    }
+
+    const task4 = (str) => {
+        const openingBrackets = ['(', '[', '<'];
+        const closingBrackets = [')', ']', '>'];
+
+        const charArray = str.split('');
+
+        const stack = [];
+        charArray.forEach(char => {
+            if (openingBrackets.includes(char)) {
+                stack.push(char);
+            } else if (closingBrackets.includes(char)) {
+                const index = closingBrackets.indexOf(char);
+                if (stack[stack.length - 1] === openingBrackets[index]) {
+                    stack.pop();
+                } else {
+                    console.log(false);
+                    return;
+                }
+            }
+        })
+
+        if (stack.length !== 0) {
+            console.log(false);
+            return;
+        }
+
+        console.log(true);
     }
 </script>
 </html>
