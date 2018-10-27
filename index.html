@@ -5,6 +5,8 @@
         <input type="text" onkeyup="task1(this.value)">
         <h2>Задание 2. Все комбинации</h2>
         <input type="text" onkeyup="task2(this.value)">
+        <h2>Задание 3. Сортировка вставками</h2>
+        <input type="text" onkeyup="task3(this.value)">
     </div>
 </body>    
 <script>
@@ -91,6 +93,38 @@
         }
 
         console.log(result);
+    }
+
+    const task3 = (str) => {
+        if (str === '') return; 
+
+        const initialArray = str.split(',');
+        if (initialArray.includes("")) return;
+        for (let i = 0; i < initialArray.length; i++) {
+            initialArray[i] = parseInt(initialArray[i])
+        }
+
+        const sortedArray = [];
+        const insertValue = (value) => {
+            if (sortedArray.length === 0) {
+                sortedArray.push(value);
+            } else {
+                const sortedLength = sortedArray.length;
+                for (let i = 0; i < sortedLength; i++) {
+                    if (sortedArray[i] > value) {
+                        sortedArray.splice(i, 0, value);
+                        return;
+                    }
+                }
+                sortedArray.push(value);
+            }
+        }
+
+        for (let i = 0; i < initialArray.length; i++) {
+            insertValue(initialArray[i]);
+        }
+
+        console.log(sortedArray);
     }
 </script>
 </html>
