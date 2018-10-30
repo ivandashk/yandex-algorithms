@@ -9,6 +9,11 @@
         <input type="text" onkeyup="task3(this.value)">
         <h2>Задание 4. Контекст скобок</h2>
         <input type="text" onkeyup="task4(this.value)">
+        <hr style="margin-top: 50px;">
+        <h2>Домашняя работа</h2>
+        <hr>
+        <h2>Задание 5. Сортировка пузырьком</h2>
+        <input type="text" onkeyup="task5(this.value)">
     </div>
 </body>    
 <script>
@@ -154,6 +159,27 @@
         }
 
         console.log(true);
+    }
+
+    const task5 = (str) => {
+        if (str === '') return; 
+
+        let initialArray = str.split(',');
+        if (initialArray.includes("")) return;
+        initialArray = initialArray.map((num) => { return parseInt(num, 10) });
+
+        let lastSortedIndex = initialArray.length;
+        while (lastSortedIndex > 1) {
+            for (let i = 0; i < lastSortedIndex; i++) {
+                if (initialArray[i] > initialArray[i+1]) {
+                    const temp = initialArray[i];
+                    initialArray[i] = initialArray[i+1];
+                    initialArray[i+1] = temp;
+                }
+            }
+            lastSortedIndex--;
+        }
+        console.log(initialArray);
     }
 </script>
 </html>
