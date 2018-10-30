@@ -136,7 +136,7 @@
         const charArray = str.split('');
 
         const stack = [];
-        charArray.forEach(char => {
+        for (let char of charArray) {
             if (openingBrackets.includes(char)) {
                 stack.push(char);
             } else if (closingBrackets.includes(char)) {
@@ -148,7 +148,7 @@
                     return;
                 }
             }
-        })
+        }
 
         if (stack.length !== 0) {
             console.log(false);
