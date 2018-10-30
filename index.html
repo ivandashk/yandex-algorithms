@@ -100,11 +100,9 @@
     const task3 = (str) => {
         if (str === '') return; 
 
-        const initialArray = str.split(',');
+        let initialArray = str.split(',');
         if (initialArray.includes("")) return;
-        for (let i = 0; i < initialArray.length; i++) {
-            initialArray[i] = parseInt(initialArray[i])
-        }
+        initialArray = initialArray.map((num) => { return parseInt(num, 10) });
 
         const sortedArray = [];
         const insertValue = (value) => {
