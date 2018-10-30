@@ -1,23 +1,24 @@
 <html>
 <body>
     <div>
+        <h2 style="font-size: 42px;">Хакатон</h2>
         <h2>Задание 1. Спираль</h2>
-        <input type="text" onkeyup="task1(this.value)">
+        <input type="text" onkeyup="spiral(this.value)">
         <h2>Задание 2. Все комбинации</h2>
-        <input type="text" onkeyup="task2(this.value)">
+        <input type="text" onkeyup="combinations(this.value)">
         <h2>Задание 3. Сортировка вставками</h2>
-        <input type="text" onkeyup="task3(this.value)">
+        <input type="text" onkeyup="insertionSort(this.value)">
         <h2>Задание 4. Контекст скобок</h2>
-        <input type="text" onkeyup="task4(this.value)">
-        <hr style="margin-top: 50px;">
-        <h2>Домашняя работа</h2>
-        <hr>
+        <input type="text" onkeyup="brackets(this.value)">
+        <h2 style="font-size: 42px;">Домашняя работа</h2>
         <h2>Задание 5. Сортировка пузырьком</h2>
-        <input type="text" onkeyup="task5(this.value)">
+        <input type="text" onkeyup="bubbleSort(this.value)">
+        <h2>Задание 6. Сортировка выбором</h2>
+        <input type="text" onkeyup="selectionSort(this.value)">
     </div>
 </body>    
 <script>
-    const task1 = (n) => {
+    const spiral = (n) => {
         if(n === '') return;
 
         const matrixSize = parseInt(n);
@@ -64,7 +65,7 @@
         console.log(matrix);
     }
 
-    const task2 = (n) => {
+    const combinations = (n) => {
         if(n === '') return;    
         const arrayLength = parseInt(n);
         let initialArray = [];
@@ -102,7 +103,7 @@
         console.log(result);
     }
 
-    const task3 = (str) => {
+    const insertionSort = (str) => {
         if (str === '') return; 
 
         let initialArray = str.split(',');
@@ -132,7 +133,7 @@
         console.log(sortedArray);
     }
 
-    const task4 = (str) => {
+    const brackets = (str) => {
         const openingBrackets = ['(', '[', '<'];
         const closingBrackets = [')', ']', '>'];
 
@@ -161,7 +162,7 @@
         console.log(true);
     }
 
-    const task5 = (str) => {
+    const bubbleSort = (str) => {
         if (str === '') return; 
 
         let initialArray = str.split(',');
@@ -180,6 +181,16 @@
             lastSortedIndex--;
         }
         console.log(initialArray);
+    }
+
+    const selectionSort = (str) => {
+        if (str === '') return; 
+
+        let initialArray = str.split(',');
+        if (initialArray.includes("")) return;
+        initialArray = initialArray.map((num) => { return parseInt(num, 10) });
+
+
     }
 </script>
 </html>
