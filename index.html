@@ -21,6 +21,8 @@
         <button onclick="widthFirstTraversal(this.value)">Выполнить</button>
         <h2>Задание 9. Простые числа</h2>
         <input type="text" onkeyup="primeNumbers(this.value)">
+        <h2>Задание 10. Бинарный поиск</h2>
+        <input type="text" onkeyup="binarySearch(this.value)">
     </div>
 </body>    
 <script>
@@ -311,8 +313,41 @@
             if (isPrime) 
                 primes.push(i);
         }
-        
+
         console.log(primes);
+    }
+
+    const binarySearch = (n) => {
+        if (n === '') return;    
+        n = parseInt(n);
+        if (n < 0) return;
+
+        let initialArray = new Array(100);
+        let num = 1;
+        initialArray = initialArray.fill(0).map(() => { return num++; });
+
+        let iterations = 0;
+        let minIndex = 0;
+        let maxIndex = initialArray.length - 1;
+
+        const search = (minIndex, maxIndex) => {
+            iterations++;
+            const middleIndex = Math.floor((minIndex + maxIndex) / 2);
+            
+            if (n < initialArray[middleIndex]) {
+                maxIndex = middleIndex - 1;
+                search(minIndex, maxIndex);
+            } else if (n > initialArray[middleIndex]) {
+                minIndex = middleIndex + 1;
+                search(minIndex, maxIndex);
+            } else {
+                return;
+            }
+        }
+
+        search(minIndex, maxIndex);
+
+        console.log(`Элемент ${n} найден за ${iterations} итераций`);
     }
 </script>
 </html>
