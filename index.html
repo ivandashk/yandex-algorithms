@@ -16,13 +16,15 @@
         <h2>Задание 6. Сортировка выбором</h2>
         <input type="text" onkeyup="selectionSort(this.value)">
         <h2>Задание 7. Обход дерева в глубину</h2>
-        <button onclick="depthFirstTraversal(this.value)">Выполнить</button>
+        <button onclick="depthFirstTraversal()">Выполнить</button>
         <h2>Задание 8. Обход дерева в ширину</h2>
-        <button onclick="widthFirstTraversal(this.value)">Выполнить</button>
+        <button onclick="widthFirstTraversal()">Выполнить</button>
         <h2>Задание 9. Простые числа</h2>
         <input type="text" onkeyup="primeNumbers(this.value)">
         <h2>Задание 10. Бинарный поиск</h2>
         <input type="text" onkeyup="binarySearch(this.value)">
+        <h2>Задание 11. Развернуть односвязный список</h2>
+        <button onclick="linkedList()">Выполнить</button>
     </div>
 </body>    
 <script>
@@ -333,7 +335,7 @@
         const search = (minIndex, maxIndex) => {
             iterations++;
             const middleIndex = Math.floor((minIndex + maxIndex) / 2);
-            
+
             if (n < initialArray[middleIndex]) {
                 maxIndex = middleIndex - 1;
                 search(minIndex, maxIndex);
@@ -348,6 +350,45 @@
         search(minIndex, maxIndex);
 
         console.log(`Элемент ${n} найден за ${iterations} итераций`);
+    }
+
+    const linkedList = () => {
+        const linkedList = {
+            value: "Node A",
+            child: {
+                value: "Node B",
+                child: {
+                    value: "Node C",
+                    child: {
+                        value: "Node D"
+                    }
+                }
+            }
+        }
+
+        console.log(JSON.parse(JSON.stringify(linkedList)));
+
+        let stack = [];
+        const fillStack = (node) => {
+            const child = node.child;
+            node.child = {};
+            stack.push(node);
+            if (!!child) fillStack(child);
+        }
+
+        fillStack(linkedList);
+        stack = stack.reverse();
+
+        let reversedLinkedList = null;
+        let parentNode = null;
+        for (let node of stack) {
+            if (!reversedLinkedList) reversedLinkedList = node;
+            else parentNode.child = node;
+            
+            parentNode = node;
+        }
+
+        console.log(reversedLinkedList);
     }
 </script>
 </html>
