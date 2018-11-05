@@ -1,7 +1,7 @@
 const binarySearch = (n) => {
     if (n === '') return;    
     n = parseInt(n);
-    if (n < 0) return;
+    if (n <= 0 || n > 100) return;
 
     let initialArray = new Array(100);
     let num = 1;
@@ -28,5 +28,6 @@ const binarySearch = (n) => {
 
     search(minIndex, maxIndex);
 
+    console.log(initialArray);
     console.log(`Элемент ${n} найден за ${iterations} итераций`);
 }

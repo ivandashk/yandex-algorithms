@@ -1,6 +1,12 @@
 const combinations = (n) => {
     if(n === '') return;    
     const arrayLength = parseInt(n);
+
+    if (n > 8) {
+        console.log("Слишком большое кол-во комбинаций");
+        return;
+    }
+
     let initialArray = [];
     for (let i = 0; i < arrayLength; i++) {
         initialArray.push(i + 1);
